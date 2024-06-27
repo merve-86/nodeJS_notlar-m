@@ -97,7 +97,7 @@ console.log(Car.arrowMethod())
 // const test2 = testArray[2]
 // //const test3 = testArray[3]
 // //const test4 = testArray[4]
-// const testPart = testArray.slice(3,5)
+// const testPart = testArray.slice(3)
 // console.log(test0, test1, test2, testPart)
 
 //Sıralama Önemli:
@@ -181,25 +181,25 @@ console.log(Car.arrowMethod())
 /*------------------------------------------------------- */
 //'NEW' Keyword:
 
-const carConstructor = function(brand, model,year = 2000) {
-    this.brand = brand
-    this.model = model
-    this.year = year
+// const carConstructor = function(brand, model,year = 2000) {
+//     this.brand = brand
+//     this.model = model
+//     this.year = year
 
-    this.startEngine = function() {
+//     this.startEngine = function() {
 
-        return 'Engine started.'
-    }
-}
+//         return 'Engine started.'
+//     }
+// }
 
-//* new ile oluşturulan objeler PascalCase ile isimlendirilir:
-const Ford = new carConstructor('Ford', 'Mustang', 1967)
-console.log(Ford)
+// //* new ile oluşturulan objeler PascalCase ile isimlendirilir:
+// const Ford = new carConstructor('Ford', 'Mustang', 1967)
+// console.log(Ford)
 
-const Mercedes = new carConstructor('Mercedes', 'CLK200', 2015)
-console.log(Mercedes)
-console.log(Mercedes.brand)
-console.log(Mercedes.startEngine())
+// const Mercedes = new carConstructor('Mercedes', 'CLK200', 2015)
+// console.log(Mercedes)
+// console.log(Mercedes.brand)
+// console.log(Mercedes.startEngine())
 
 
 
