@@ -9,8 +9,8 @@
 /* ------------------------------------------------------- *
 //* Class Declaration:
 
-// Class isimleri PascalCase yapıdadır:
-// class PascalNameCase { ... }
+ Class isimleri PascalCase yapıdadır:
+ class PascalNameCase { ... }
 
 //* Class Expression:
 
