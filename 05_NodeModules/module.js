@@ -4,7 +4,7 @@
 /* -------------------------------------------- */
 // Dosyayı içe aktarma:
 
-// require('./modules/index.js')
+//require('./modules/index.js')
 // require('./modules/index')
 // require('./modules/') // default file name: index
 
@@ -36,11 +36,11 @@
 // objFunc.test3()
 
 // Object Desctructuring:
-const { test1, test3: func3, test2, newVar } = require("./modules/");
-test1();
-test2();
-func3();
-console.log(newVar);
+// const { test1, test3: func3, test2, newVar } = require("./modules/");
+// test1();
+// test2();
+// func3();
+// console.log(newVar);
 
 /* -------------------------------------------- */
 /* -------------------------------------------- */

@@ -1,7 +1,7 @@
 "use strict";
 /* -------------------------------------------- */
 
-// console.log('Module index started')
+//console.log('Module index started')
 
 /* -------------------------------------------- *
 // Export:
@@ -20,17 +20,17 @@ module.exports = function test() {
 
 /* -------------------------------------------- */
 
-function test1() {
-  console.log("test1 çalıştı.");
-}
+// function test1() {
+//   console.log("test1 çalıştı.");
+// }
 
-function test2() {
-  console.log("test2 çalıştı.");
-}
+// function test2() {
+//   console.log("test2 çalıştı.");
+// }
 
-function test3() {
-  console.log("test3 çalıştı.");
-}
+// function test3() {
+//   console.log("test3 çalıştı.");
+// }
 
 // Array export:
 // module.exports = [
@@ -79,20 +79,20 @@ function test3() {
 /* -------------------------------------------- */
 // Object Export -4:
 
-module.exports = {
-  test1: function () {
-    console.log("test1 çalıştı.");
-  },
+// module.exports = {
+//   test1: function () {
+//     console.log("test1 çalıştı.");
+//   },
 
-  test2: function () {
-    console.log("test2 çalıştı.");
-  },
+//   test2: function () {
+//     console.log("test2 çalıştı.");
+//   },
 
-  test3: function () {
-    console.log("test3 çalıştı.");
-  },
+//   test3: function () {
+//     console.log("test3 çalıştı.");
+//   },
 
-  newVar: "extra value",
-};
+//   newVar: "extra value",
+// };
 
 /* -------------------------------------------- */
