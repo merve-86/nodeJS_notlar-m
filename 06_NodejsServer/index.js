@@ -110,6 +110,15 @@ const app = http.createServer((req, res) => {
     //console.log(req.method)
 
     if (req.method == "GET") {
+
+      res.setHeader('title', 'value')
+
+       res.writeHead(400, 'HATALI ISLEM ',{
+        'content-encoding':'utf-8',
+        'multi-headers': 'test',
+      })
+
+
       const obj = {
         result: true,
         message: "Hello World",
@@ -117,7 +126,7 @@ const app = http.createServer((req, res) => {
 
       res.write(JSON.stringify(obj));
       res.end();
-      
+
     } else {
       res.end("Wrong Method");
     }
