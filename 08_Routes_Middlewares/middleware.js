@@ -163,30 +163,30 @@ app.get('/', (req, res) => {
 /* ------------------------------------------------------- */
 // Ayrı dosyadan çağırma:
 
-// const middlewares = require('./middlewares/') // Array
+const middlewares = require('./middlewares/') // Array
 // const { middleware1, middleware2, middleware3 } = require('./middlewares/') // Object
 
-// app.get('/*', middleware1, middleware2, middleware3, (req, res) => {
+app.get('/*', middleware1, middleware2, middleware3, (req, res) => {
 
-//     res.send({
-//         message: 'middlewares/index',
-//     })
-
-// })
-
-const middlewares = require("./middlewares/"); // Object
-
-app.get(
-  "/*",
-  middlewares.middleware1,
-  middlewares.middleware2,
-  middlewares.middleware3,
-  (req, res) => {
     res.send({
-      message: "middlewares/index",
-    });
-  }
-);
+        message: 'middlewares/index',
+    })
+
+})
+
+// const middlewares = require("./middlewares/"); // Object
+
+// app.get(
+//   "/*",
+//   middlewares.middleware1,
+//   middlewares.middleware2,
+//   middlewares.middleware3,
+//   (req, res) => {
+//     res.send({
+//       message: "middlewares/index",
+//     });
+//   }
+// );
 
 /* ------------------------------------------------------- */
 

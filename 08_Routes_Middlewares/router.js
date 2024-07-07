@@ -19,7 +19,7 @@ const PORT = process.env.PORT || 8000;
 // })
 
 // express.Router()
-// const router = express.Router()
+//const router = express.Router()
 
 // router.get('/', (req, res) => { res.send({ message: 'Home Page' }) })
 // router.get('/path', (req, res) => { res.send({ message: 'Path Page' }) })
@@ -34,7 +34,7 @@ const PORT = process.env.PORT || 8000;
 // Router tanımlandıktan sonra app.use() yapılmalı:
 // app.use(router)
 
-// const router = require('./routes/')
+const router = require('./routes/')
 // app.use(router)
 // app.use(require('./routes/'))
 app.use("/test", require("./routes/"));
