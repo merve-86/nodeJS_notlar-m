@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 8000;
 
 /* ------------------------------------------------------- *
 
-app.get("/user/:id", function (req, res) {
+app.get("/user/:id", function (req, res, next) {
   //     throw new Error('Hata oluştu')
 
   //     res.send({
@@ -29,15 +29,30 @@ app.get("/user/:id", function (req, res) {
     }
 
   } catch (error) {
-    res.status(400).send({
-        error:true,
-        message:error.message
-    })
+    next(error)
+    // res.status(400).send({
+    //     error:true,
+    //     message:error.message
+    // })
   }
 });
 
 /* ------------------------------------------------------- */
-/* ------------------------------------------------------- */
+
+require('express-async-errors')
+
+const asyncFunction = async () => {
+  throw new Error("async-error");
+};
+
+app.get("/async", async (req, res, next) => {
+  //await asyncFunction();
+  throw new Error("async-error", {
+    cause: "async function içinde bir hatadır",
+  });
+});
+
+/* ------------------------------------------------------- *
 
 app.get("/user/:id", function (req, res) {
 
@@ -54,15 +69,18 @@ app.get("/user/:id", function (req, res) {
 
 /* ------------------------------------------------------- */
 const errorHandler = (error, req, res, next) => {
+  console.log("ErrorHandler çalıştı");
 
-  const statusCode = res?.errorStatusCode || 500
+  // const statusCode = res?.errorStatusCode || 500
 
-    res.status(statusCode).send({
-        error: true,
-        message: error.message,
-    });
+  res.status(500).send({
+    error: true,
+    message: error.message,
+    couse:error.cause,
+    stack:error.stack
+  });
 };
-app.use(errorHandler)
+app.use(errorHandler);
 
 /* ------------------------------------------------------- */
 app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
