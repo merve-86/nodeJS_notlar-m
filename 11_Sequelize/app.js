@@ -13,9 +13,9 @@ const PORT = process.env.PORT || 8000;
 // Accept json data:
 app.use(express.json());
 
-app.all("/", (req, res) => {
-    res.send("WELCOME TO TODO API");
-});
+// app.all("/", (req, res) => {
+//     res.send("WELCOME TO TODO API");
+// });
 
 // continue from here...
 /* ------------------------------------------------------- */
@@ -25,8 +25,46 @@ const { Sequelize, DataTypes } = require('sequelize')
 const sequelize = new Sequelize('sqlite:' + process.env.SQLITE || './db.sqlite3')
 
 const Todo = sequelize.define('todos', {
-    
+    title:{
+        type: DataTypes.STRING(256),
+        allowNull: false,
+    },
+    description: DataTypes.TEXT,
+
+    priority:{
+        type: DataTypes.TINYINT,
+        allowNull:false,
+        defaultValue: false        
+    },
+
+    isDone:{
+        type: DataTypes.BOOLEAN,
+        allowNull:false,
+        defaultValue: false,
+    },
 })
+
+// sequelize.sync()
+// sequelize.sync({force:true})
+//sequelize.sync({alter:true})
+
+
+sequelize.authenticate()
+  .then(() => console.log("DB Connected *"))
+  .catch(() => console.log("DB Not Connected *"))
+
+/* ------------------------------------------------------- */
+
+const router = express.Router()
+
+router.post('/', (req,res) => {
+    const receivedData = req.body
+    console.log(receivedData)
+})
+
+app.use(router)
+
+
 
 /* ------------------------------------------------------- */
 
