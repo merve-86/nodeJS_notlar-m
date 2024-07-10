@@ -9,9 +9,13 @@ const app = express();
 require("dotenv").config();
 const PORT = process.env.PORT || 8000;
 
+
+
 /* ------------------------------------------------------- */
 // Accept json data:
 app.use(express.json());
+
+require("express-async-errors");
 
 // app.all("/", (req, res) => {
 //     res.send("WELCOME TO TODO API");
@@ -57,9 +61,35 @@ sequelize.authenticate()
 
 const router = express.Router()
 
-router.post('/', (req,res) => {
-    const receivedData = req.body
-    console.log(receivedData)
+
+router.get('/', async (req,res) => {
+  const data =await Todo.findAndCountAll()
+
+  res.status(200).send({
+    error:false,
+    result: data 
+  })
+})
+
+router.post('/', async (req,res) => {
+    // const receivedData = req.body
+    // //console.log(receivedData)
+
+    // const data = await Todo.create({
+    //   title:receivedData.title,
+    //   description:receivedData.description,
+    //   priority:receivedData.priority,
+    //   isDone:receivedData.isDone
+    //   })
+      //console.log(data)
+
+      const data  = await Todo.create(req.body)
+      console.log(data)
+
+      res.status(201).send({
+        error:false,
+        result:data.dataValues
+      })
 })
 
 app.use(router)
