@@ -1,5 +1,5 @@
 {
-  "name": "11_sequelize",
+  "name": "10_model-sequelize",
   "version": "1.0.0",
   "main": "app.js",
   "scripts": {
