@@ -1,5 +1,4 @@
 "use strict";
-
 /* -------------------------------------------------------
     EXPRESSJS - BLOG Project with Mongoose
 ------------------------------------------------------- */
@@ -75,6 +74,12 @@ const BlogCategorySchema = new mongoose.Schema(
 const BlogPostSchema = new mongoose.Schema(
   {
     // _id
+
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
 
     categoryId: {
       // Default Relation: ManyToOne
