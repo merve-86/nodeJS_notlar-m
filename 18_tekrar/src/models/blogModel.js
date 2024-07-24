@@ -75,6 +75,12 @@ const BlogPostSchema = new mongoose.Schema(
   {
     // _id
 
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
+    },
+
     categoryId: {
       // Default Relation: ManyToOne
       type: mongoose.Schema.Types.ObjectId, // Hexadecimal Format: 'fedcba9876543210'
@@ -94,6 +100,11 @@ const BlogPostSchema = new mongoose.Schema(
       trim: true,
       required: true,
     },
+
+    published:{
+      type: Boolean,
+      default:true
+    }
 
     // createdAt // timestamps: true
     // updatedAt // timestamps: true
