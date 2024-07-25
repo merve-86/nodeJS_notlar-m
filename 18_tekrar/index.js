@@ -42,6 +42,8 @@ app.use(
 
 app.use(require("./src/middlewares/userControl"));
 
+app.use(require('./src/middlewares/findSearchSortPage'))
+
 /* ------------------------------------------------------- */
 
 app.all("/", (req, res) => {
@@ -70,4 +72,4 @@ app.listen(PORT, () => console.log("Running: http://127.0.0.1:" + PORT));
 
 /* ------------------------------------------------------- */
 
-require('./sync')()
+// require('./sync')()
