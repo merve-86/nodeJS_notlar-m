@@ -2,6 +2,12 @@
 /* -------------------------------------------------------
     EXPRESS - Personnel API
 ------------------------------------------------------- */
+
+// Simple Token
+// Token Authentication
+// Basic Token
+// Token
+
 const Token = require("../models/token.model");
 
 module.exports = {
@@ -17,6 +23,7 @@ module.exports = {
 
   create: async (req, res) => {
     const data = await Token.create(req.body);
+
     res.status(201).send({
       error: false,
       data,
@@ -46,6 +53,7 @@ module.exports = {
 
   delete: async (req, res) => {
     const data = await Token.deleteOne({ _id: req.params.id });
+
     res.status(data.deletedCount ? 204 : 404).send({
       error: !data.deletedCount,
       data,

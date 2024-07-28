@@ -5,7 +5,13 @@
 
 const { mongoose } = require("../configs/dbConnection");
 
+/* ------------------------------------------------------- *
+{
+    "userId": "66a13e516d7779078d0458e8",
+    "token": "random-chars-to-here"
+}
 /* ------------------------------------------------------- */
+// Token Model:
 
 const TokenSchema = new mongoose.Schema(
   {
@@ -25,12 +31,10 @@ const TokenSchema = new mongoose.Schema(
     },
   },
   {
-    collation: " tokens",
+    collection: "tokens",
     timestamps: true,
   }
 );
 
-
 /* ------------------------------------------------------- */
-
-module.exports = mongoose.model('Token', TokenSchema)
+module.exports = mongoose.model("Token", TokenSchema);
