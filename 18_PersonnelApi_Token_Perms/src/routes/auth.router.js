@@ -3,17 +3,16 @@
     EXPRESS - Personnel API
 ------------------------------------------------------- */
 
-const router = require('express').Router()
+const router = require("express").Router();
 
-const auth = require('../controllers/auth.controller')
+const auth = require("../controllers/auth.controller");
 
-/*------------------------------------------------------- */
+/* ------------------------------------------------------- */
 
-router.post('/login', auth.login)
-router.all('/login', auth.logout)
+// URL: /auth
 
+router.post("/login", auth.login);
+router.all("/logout", auth.logout);
 
-/*------------------------------------------------------- */
-
-module.exports = router
-
+/* ------------------------------------------------------- */
+module.exports = router;

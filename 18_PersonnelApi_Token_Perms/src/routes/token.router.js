@@ -7,7 +7,7 @@ const router = require("express").Router();
 
 const token = require("../controllers/token.controller");
 
-
+const { isAdmin } = require("../middlewares/permissions");
 
 /* ------------------------------------------------------- */
 
@@ -23,7 +23,7 @@ const token = require("../controllers/token.controller");
 
 /* ------------------------------------------------------- */
 
-
+router.use(isAdmin);
 
 router.route("/").get(token.list).post(token.create);
 
