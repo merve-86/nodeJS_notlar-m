@@ -41,7 +41,7 @@ app.use(
   })
 );
 
-const morgan = require('morgan')
+const morgan = require("morgan");
 
 // app.use(morgan('combined'))
 // app.use(
@@ -50,7 +50,16 @@ const morgan = require('morgan')
 //   )
 // );
 
-
+const fs = require("node:fs");
+const now = new Date()
+console.log(now, typeof now)
+const today = now.toISOString().split('T')
+console.log(today, typeof today)
+app.use(
+  morgan("combined", {
+    stream: fs.createWriteStream("./access.log", { flags: "a+" }),
+  })
+);
 
 // Authentication Middleware:
 app.use(require("./src/middlewares/authentication"));
