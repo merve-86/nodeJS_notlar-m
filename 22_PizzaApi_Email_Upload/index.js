@@ -47,7 +47,7 @@ app.use(require("./src/middlewares/queryHandler"));
 
 /* ------------------------------------------------------- */
 
-const nodemailer = require('nodemailer')
+const nodemailer = require("nodemailer");
 
 // nodemailer.createTestAccount().then((data) => console.log(data) )
 
@@ -89,12 +89,12 @@ const nodemailer = require('nodemailer')
 // })
 
 const transporter = nodemailer.createTransport({
-  service: 'gmail',
+  service: "gmail",
   auth: {
-    user: 'merveeoncuu@gmail.com',
-    pass: ''
-  }
-})
+    user: "merveeoncuu@gmail.com",
+    pass: "",
+  },
+});
 
 /* ------------------------------------------------------- */
 // Routes:
@@ -126,4 +126,4 @@ app.listen(PORT, () => console.log("http://127.0.0.1:" + PORT));
 
 /* ------------------------------------------------------- */
 // Syncronization (must be in commentLine):
-// require('./src/helpers/sync')() // !!! It clear database.
+//require("./src/helpers/sync")(); // !!! It clear database.

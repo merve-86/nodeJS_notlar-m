@@ -4,6 +4,18 @@
 ------------------------------------------------------- */
 const router = require("express").Router();
 /* ------------------------------------------------------- */
+
+const multer = require('multer')
+
+const upload = multer({
+  // dest: './uploads',
+  storage: multer.diskStorage({
+    destination: './uploads',
+  })
+})
+
+
+/* ------------------------------------------------------- */
 // routes/pizza:
 
 const pizza = require("../controllers/pizza");

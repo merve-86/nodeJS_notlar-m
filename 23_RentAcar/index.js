@@ -2,14 +2,6 @@
 /* -------------------------------------------------------
     | FULLSTACK TEAM | NODEJS / EXPRESS |
 ------------------------------------------------------- */
-/*
-    $ cp .env-sample .env
-    $ npm init -y
-    $ npm i express dotenv mongoose express-async-errors
-    $ npm i morgan swagger-autogen swagger-ui-express redoc-express
-    $ mkdir logs
-    $ nodemon
-*/
 const express = require("express");
 const app = express();
 
@@ -18,6 +10,7 @@ const app = express();
 
 // envVariables to process.env:
 require("dotenv").config();
+const HOST = process.env?.HOST || "127.0.0.1";
 const PORT = process.env?.PORT || 8000;
 
 // asyncErrors to errorHandler:
@@ -36,27 +29,24 @@ dbConnection();
 // Accept JSON:
 app.use(express.json());
 
-// Logger:
-app.use(require("./src/middlewares/logger"));
-
-// Auhentication:
+// Check Authentication:
 app.use(require("./src/middlewares/authentication"));
 
-// findSearchSortPage / res.getModelList:
-app.use(require("./src/middlewares/queryHandler"));
+// Run Logger:
+app.use(require("./src/middlewares/logger"));
+
+// res.getModelList():
+app.use(require("./src/middlewares/findSearchSortPage"));
 
 /* ------------------------------------------------------- */
 // Routes:
-
-// routes/index.js:
-app.use("/", require("./src/routes/"));
 
 // HomePath:
 app.all("/", (req, res) => {
   res.send({
     error: false,
-    message: "Welcome to PIZZA API",
-    docs: {
+    message: "Welcome to RENT A CAR API",
+    documents: {
       swagger: "/documents/swagger",
       redoc: "/documents/redoc",
       json: "/documents/json",
@@ -65,14 +55,17 @@ app.all("/", (req, res) => {
   });
 });
 
+// Routes:
+app.use('/', require("./src/routes/"));
+
 /* ------------------------------------------------------- */
 
 // errorHandler:
 app.use(require("./src/middlewares/errorHandler"));
 
 // RUN SERVER:
-app.listen(PORT, () => console.log("http://127.0.0.1:" + PORT));
+app.listen(PORT, HOST, () => console.log(`http://${HOST}:${PORT}`));
 
 /* ------------------------------------------------------- */
 // Syncronization (must be in commentLine):
-//require('./src/helpers/sync')() // !!! It clear database.
+// require('./src/helpers/sync')()
