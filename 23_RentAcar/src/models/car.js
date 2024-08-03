@@ -31,3 +31,68 @@ const { mongoose } = require("../configs/dbConnection");
 }
 /* ------------------------------------------------------- */
 // Car Model:
+
+const CarSchema = new mongoose.Schema(
+  {
+    plateNumber: {
+      type: String,
+      trim: true,
+      required: true,
+      unique: true,
+    },
+
+    brand: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+
+    model: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+
+    year: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+
+    isAutomatic: {
+      type: Boolean,
+      default: true,
+      required: true,
+    },
+
+    pricePerDay: {
+      type: String,
+      trim: true,
+      required: true,
+    },
+
+    isPublish: {
+      type: Boolean,
+      default: true,
+      required: true,
+    },
+
+    createdId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    },
+
+    updatedId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+        required: true,
+    }
+    
+  },
+
+  { collection: "cars", timestamps: true }
+);
+
+/* ------------------------------------------------------- */
+module.exports = mongoose.model("Car", CarSchema);
