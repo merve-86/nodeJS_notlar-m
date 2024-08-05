@@ -62,7 +62,7 @@ module.exports = {
     // Convert to JWT:
     // jwt.sign(payload, key, { expiresIn: '30m' })
     const accessToken = jwt.sign(accessData, process.env.ACCESS_KEY, {
-      expiresIn: "30m",
+      expiresIn: "1m",
     });
 
     // REFRESH TOKEN
