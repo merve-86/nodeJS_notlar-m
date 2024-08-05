@@ -13,7 +13,7 @@ const user = require("../controllers/user");
 
 router
   .route("/")
-  .get(permissions.isAdmin, user.list)
+  .get(permissions.isStaffOrisAdmin, user.list)
   .post(permissions.isStaffOrisAdmin, user.create);
 
 router
