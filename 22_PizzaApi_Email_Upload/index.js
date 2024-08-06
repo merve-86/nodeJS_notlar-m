@@ -46,15 +46,18 @@ app.use(require("./src/middlewares/authentication"));
 app.use(require("./src/middlewares/queryHandler"));
 
 /* ------------------------------------------------------- */
+// E-MAIL:
+// NodeMailer.com
+// npm install nodemailer
 
-const nodemailer = require("nodemailer");
+//const nodemailer = require('nodemailer')
 
-// nodemailer.createTestAccount().then((data) => console.log(data) )
-
+// Create Test Account:
+// nodemailer.createTestAccount().then((data) => console.log(data))
 /*
 {
-  user: 'somjy2zzabif6vyl@ethereal.email',
-  pass: 'hExaDWKKeycQECvNV5',
+  user: 'fohqdiiggdndutgu@ethereal.email',
+  pass: 'TxVsHnKjKz93jmdU4T',
   smtp: { host: 'smtp.ethereal.email', port: 587, secure: false },
   imap: { host: 'imap.ethereal.email', port: 993, secure: true },
   pop3: { host: 'pop3.ethereal.email', port: 995, secure: true },
@@ -63,38 +66,65 @@ const nodemailer = require("nodemailer");
 }
 */
 
+// // Connect to MailServer/SMTP:
 // const transporter = nodemailer.createTransport({
-//   host: 'smtp.ethereal.email',
-//   port: '587',
+//   // SMTP:
+//   host: "smtp.ethereal.email",
+//   port: 587,
 //   secure: false,
 //   auth: {
-//     user: 'somjy2zzabif6vyl@ethereal.email',
-//     pass: 'hExaDWKKeycQECvNV5'
-//   }
-// })
-
+//     user: "fohqdiiggdndutgu@ethereal.email",
+//     pass: "TxVsHnKjKz93jmdU4T",
+//   },
+// });
 // console.log(transporter)
 
+// // SendMail:
+// transporter.sendMail(
+//   {
+//     from: "fohqdiiggdndutgu@ethereal.email",
+//     to: "merveeoncuu@gmail.com", // 'abc@def.com, def@ghi.com'
+//     subject: "Hello",
+//     text: "Hello There. How are you?",
+//     html: "<p> <b> Hello There </b> <br> How are you? </p>",
+//   },
+//   function (error, success) {
+//     success ? console.log("SUCCESS:", success) : console.log("ERROR: ", error);
+//   }
+// );
+
+// //* GoogleMail (gmail)
+// //* Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords
+// const transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     auth: {
+//         user: 'merveeoncuu@gmail.com',
+//         pass: 'krkh fxow gujl cjhf'
+//     }
+// })
+
+//* YandexMail (yandex)
+// const transporter = nodemailer.createTransport({
+//     service: 'yandex',
+//     auth: {
+//         user: 'test@yandex.com',
+//         pass: '11' // your email-password
+//     }
+// })
+
+// // SendMail:
 // transporter.sendMail({
 
-//   from: 'somjy2zzabif6vyl@ethereal.email',
-//   to: 'merveeoncuu@gmail.com',
-//   subject: 'Hello',
-//   text: 'Hello There. How are you?',
-//   html: '<p> <b> Hello There </b> <br> How are you? </p>',
+//     from: 'qadir@clarusway.com',
+//     to: 'qadir@clarusway.com', // 'abc@def.com, def@ghi.com'
+//     subject: 'Hello',
+//     text: 'Hello There. How are you?',
+//     html: '<p> <b> Hello There </b> <br> How are you? </p>',
 
 // }, function (error, success) {
 
-//   success ? console.log('SUCCESS: ', success) : console.log('ERROR: ', error)
+//     success ? console.log('SUCCESS:', success) : console.log('ERROR: ', error)
 // })
-
-const transporter = nodemailer.createTransport({
-  service: "gmail",
-  auth: {
-    user: "merveeoncuu@gmail.com",
-    pass: "",
-  },
-});
 
 /* ------------------------------------------------------- */
 // Routes:
@@ -116,6 +146,10 @@ app.all("/", (req, res) => {
   });
 });
 
+// StaticFile:
+// app.use('/uploads', express.static('./uploads'))
+app.use("/images", express.static("./uploads"));
+
 /* ------------------------------------------------------- */
 
 // errorHandler:
@@ -126,4 +160,4 @@ app.listen(PORT, () => console.log("http://127.0.0.1:" + PORT));
 
 /* ------------------------------------------------------- */
 // Syncronization (must be in commentLine):
-//require("./src/helpers/sync")(); // !!! It clear database.
+// require('./src/helpers/sync')() // !!! It clear database.
