@@ -12,16 +12,16 @@ module.exports = function sendMail(to, subject, message) {
   const transporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "qadir@clarusway.com",
-      pass: "krkh fxow gujl cjhf",
+      user: "merveeoncuu86@gmail.com",
+      pass: "zjfr rubr zcff myfy",
     },
   });
 
   // SendMail:
   transporter.sendMail(
     {
-      from: "qadir@clarusway.com",
-      // to: 'qadir@clarusway.com', // 'abc@def.com, def@ghi.com'
+      from: "merveeoncuu86@gmail.com",
+      // to: 'merveeoncuu86@gmail.com8, // 'abc@def.com, def@ghi.com'
       to: to,
       // subject: 'Hello',
       subject: subject,
