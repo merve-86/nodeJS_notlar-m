@@ -50,14 +50,14 @@ app.use(require("./src/middlewares/queryHandler"));
 // NodeMailer.com
 // npm install nodemailer
 
-//const nodemailer = require('nodemailer')
+// const nodemailer = require('nodemailer')
 
 // Create Test Account:
 // nodemailer.createTestAccount().then((data) => console.log(data))
 /*
 {
-  user: 'fohqdiiggdndutgu@ethereal.email',
-  pass: 'TxVsHnKjKz93jmdU4T',
+  user: 'awxt4bslsuo53z2h@ethereal.email',
+  pass: 'snwKeGQqD6EESwr7n2',
   smtp: { host: 'smtp.ethereal.email', port: 587, secure: false },
   imap: { host: 'imap.ethereal.email', port: 993, secure: true },
   pop3: { host: 'pop3.ethereal.email', port: 995, secure: true },
@@ -68,37 +68,37 @@ app.use(require("./src/middlewares/queryHandler"));
 
 // // Connect to MailServer/SMTP:
 // const transporter = nodemailer.createTransport({
-//   // SMTP:
-//   host: "smtp.ethereal.email",
-//   port: 587,
-//   secure: false,
-//   auth: {
-//     user: "fohqdiiggdndutgu@ethereal.email",
-//     pass: "TxVsHnKjKz93jmdU4T",
-//   },
-// });
-// console.log(transporter)
+//     // SMTP:
+//     host: 'smtp.ethereal.email',
+//     port: 587,
+//     secure: false,
+//     auth: {
+//         user: 'awxt4bslsuo53z2h@ethereal.email',
+//         pass: 'snwKeGQqD6EESwr7n2'
+//     }
+// })
+// // console.log(transporter)
 
 // // SendMail:
-// transporter.sendMail(
-//   {
-//     from: "fohqdiiggdndutgu@ethereal.email",
-//     to: "merveeoncuu@gmail.com", // 'abc@def.com, def@ghi.com'
-//     subject: "Hello",
-//     text: "Hello There. How are you?",
-//     html: "<p> <b> Hello There </b> <br> How are you? </p>",
-//   },
-//   function (error, success) {
-//     success ? console.log("SUCCESS:", success) : console.log("ERROR: ", error);
-//   }
-// );
+// transporter.sendMail({
+
+//     from: 'awxt4bslsuo53z2h@ethereal.email',
+//     to: 'qadir@clarusway.com', // 'abc@def.com, def@ghi.com'
+//     subject: 'Hello',
+//     text: 'Hello There. How are you?',
+//     html: '<p> <b> Hello There </b> <br> How are you? </p>',
+
+// }, function (error, success) {
+
+//     success ? console.log('SUCCESS:', success) : console.log('ERROR: ', error)
+// })
 
 // //* GoogleMail (gmail)
 // //* Google -> AccountHome -> Security -> Two-Step-Verify -> App-Passwords
 // const transporter = nodemailer.createTransport({
 //     service: 'gmail',
 //     auth: {
-//         user: 'merveeoncuu@gmail.com',
+//         user: 'qadir@clarusway.com',
 //         pass: 'krkh fxow gujl cjhf'
 //     }
 // })
@@ -112,7 +112,7 @@ app.use(require("./src/middlewares/queryHandler"));
 //     }
 // })
 
-// // SendMail:
+// SendMail:
 // transporter.sendMail({
 
 //     from: 'qadir@clarusway.com',

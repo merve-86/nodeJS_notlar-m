@@ -9,18 +9,18 @@ const Pizza = require("../models/pizza");
 module.exports = {
   list: async (req, res) => {
     /*
-            #swagger.tags = ["Pizzas"]
-            #swagger.summary = "List Pizzas"
-            #swagger.description = `
-                You can send query with endpoint for filter[], search[], sort[], page and limit.
-                <ul> Examples:
-                    <li>URL/?<b>filter[field1]=value1&filter[field2]=value2</b></li>
-                    <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>
-                    <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>
-                    <li>URL/?<b>page=2&limit=1</b></li>
-                </ul>
-            `
-        */
+                #swagger.tags = ["Pizzas"]
+                #swagger.summary = "List Pizzas"
+                #swagger.description = `
+                    You can send query with endpoint for filter[], search[], sort[], page and limit.
+                    <ul> Examples:
+                        <li>URL/?<b>filter[field1]=value1&filter[field2]=value2</b></li>
+                        <li>URL/?<b>search[field1]=value1&search[field2]=value2</b></li>
+                        <li>URL/?<b>sort[field1]=1&sort[field2]=-1</b></li>
+                        <li>URL/?<b>page=2&limit=1</b></li>
+                    </ul>
+                `
+            */
 
     const data = await res.getModelList(Pizza, {}, "toppingIds");
 
@@ -35,9 +35,9 @@ module.exports = {
 
   create: async (req, res) => {
     /*
-            #swagger.tags = ["Pizzas"]
-            #swagger.summary = "Create Pizza"
-        */
+                #swagger.tags = ["Pizzas"]
+                #swagger.summary = "Create Pizza"
+            */
     let { toppingIds } = req.body;
     req.body.toppingIds = [...new Set(toppingIds)]; // [1,1,2,2,3,3,5]=>[1,2,3,5]
 
@@ -51,9 +51,9 @@ module.exports = {
 
   read: async (req, res) => {
     /*
-            #swagger.tags = ["Pizzas"]
-            #swagger.summary = "Get Single Pizza"
-        */
+                #swagger.tags = ["Pizzas"]
+                #swagger.summary = "Get Single Pizza"
+            */
 
     const data = await Pizza.findOne({ _id: req.params.id }).populate(
       "toppingIds"
@@ -71,6 +71,14 @@ module.exports = {
             #swagger.summary = "Update Pizza"
         */
 
+    /* FILE */
+    // console.log('file', req.file) // upload.single()
+    // console.log('files', req.files) // upload.array() || upload.any()
+    if (req.file) {
+      req.body.image = req.file.filename;
+    }
+    /* FILE */
+
     const data = await Pizza.updateOne({ _id: req.params.id }, req.body, {
       runValidators: true,
     });
@@ -84,9 +92,9 @@ module.exports = {
 
   delete: async (req, res) => {
     /*
-            #swagger.tags = ["Pizzas"]
-            #swagger.summary = "Delete Pizza"
-        */
+                #swagger.tags = ["Pizzas"]
+                #swagger.summary = "Delete Pizza"
+            */
 
     const data = await Pizza.deleteOne({ _id: req.params.id });
 
