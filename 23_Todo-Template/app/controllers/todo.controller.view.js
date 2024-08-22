@@ -15,6 +15,8 @@ module.exports = {
     //   error: false,
     //   result: data,
     // });
+    console.log(data)
+    
     res.render('index', {todos: data.rows, count: data.count})
   },
 
