@@ -7,62 +7,69 @@
 const Todo = require("../models/todo.model");
 
 const PRIORITIES = {
-  '-1': 'Low',
-  '0': 'Normal',
-  '1': 'High',
-}
+  "-1": "Low",
+  0: "Normal",
+  1: "High",
+};
 
 module.exports = {
   list: async (req, res) => {
     // const data = await Todo.findAll()
-    const data = await Todo.findAndCountAll();
+    const data = await Todo.findAndCountAll({
+      order: [["id", "desc"]],
+    });
 
     // res.status(200).send({
     //   error: false,
     //   result: data,
     // });
-    console.log(data)
+    console.log(data);
 
-    res.render('index', {todos: data.rows, count: data.count, priorities: PRIORITIES})
+    res.render("index", {
+      todos: data.rows,
+      count: data.count,
+      priorities: PRIORITIES,
+    });
   },
 
   // CRUD ->
 
   create: async (req, res) => {
-    // const receivedData = req.body
-    // // console.log(receivedData)
+    if (req.method == "POST") {
+      const data = await Todo.create(req.body);
 
-    // const data = await Todo.create({
-    //     title: receivedData.title,
-    //     description: receivedData.description,
-    //     priority: receivedData.priority,
-    //     isDone: receivedData.isDone
-    // })
-    // // console.log(data)
-
-    const data = await Todo.create(req.body);
-    // console.log(data)
-
-    res.status(201).send({
-      error: false,
-      result: data.dataValues,
-    });
+      res.redirect("/view");
+    } else {
+      res.render("todoCreate", { priorities: PRIORITIES });
+    }
   },
 
   read: async (req, res) => {
     // const data = await Todo.findOne({ where: { id: req.params.id } })
     const data = await Todo.findByPk(req.params.id);
 
-    res.status(200).send({
-      error: false,
-      result: data,
-    });
+    // res.status(200).send({
+    //   error: false,
+    //   result: data,
+    // });
+    res.render("todoRead", { todo: data.dataValues, priorities: PRIORITIES });
   },
 
   update: async (req, res) => {
-    // const data = await Todo.update({ ...newData }, { ...filter })
-    const data = await Todo.update(req.body, { where: { id: req.params.id } });
-    // console.log(data)
+    if (req.method == "POST") {
+      const data = await Todo.update(req.body, {
+        where: { id: req.params.id },
+      });
+
+      res.redirect("/view");
+    } else {
+      const data = await Todo.findByPk(req.params.id);
+
+      res.render("todoUpdate", {
+        todo: data.dataValues,
+        priorities: PRIORITIES,
+      });
+    }
 
     res.status(202).send({
       error: false,
@@ -92,7 +99,8 @@ module.exports = {
       // })
 
       // Sadece statusCode çıktısı ver:
-      res.sendStatus(204);
+      // res.sendStatus(204);
+      res.redirect('/view')
     } else {
       // Not Deleted:
       // res.status(404).send({

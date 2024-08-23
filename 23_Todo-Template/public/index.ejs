@@ -16,7 +16,7 @@
       <h1>FullStack Todo Template Project</h1>
       <div class="rows">
         <h2>TODO LIST</h2>
-         <p><a href="/view/create" class="btn btn-primary">CREATE</a></p>
+         
         <p>Count: <%= count %></p>
         <table class="table table-striped">
           <thead>
@@ -27,6 +27,7 @@
               <th>Priority</th>
               <th>isDone</th>
               <th>Created</th>
+              <th><a href="/view/create" class="btn btn-primary">CREATE</a></th>
 
             </tr>
           </thead>
@@ -39,7 +40,12 @@
                 <td> <%= todo.dataValues.description %></td>              
                 <td> <%= priorities[todo.dataValues.priority] %></td>           
                  <td><%- (todo.dataValues.isDone ? '<span class="text-success">YES</span>' : '<span class="text-danger">NO</span>') %></td>             
-                <td> <%= todo.dataValues.createdAt.toLocaleDateString('tr') %></td>         
+                <td> <%= todo.dataValues.createdAt.toLocaleDateString('tr') %></td>
+                 <td>
+                                <a class="btn btn-sm btn-secondary" href="/view/<%= todo.dataValues.id %>">Read</a>
+                                <a class="btn btn-sm btn-primary" href="/view/<%= todo.dataValues.id %>/update">Update</a>
+                                <a class="btn btn-sm btn-danger" href="/view/<%= todo.dataValues.id %>/delete" onclick="confirm('Are you sure?')">Delete</a>
+                            </td>         
 
             </tr>
             <% } %>
