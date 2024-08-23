@@ -27,13 +27,17 @@ const todo = require("../controllers/todo.controller.view");
 
 /* ------------------------------------------------------- */
 
-router.route("/")
-.get(todo.list)
-.post(todo.create);
+// router.route("/")
+// .get(todo.list)
+// .post(todo.create);
 
-router.route("/:id")
-.get(todo.read)
-.put(todo.update)
-.delete(todo.delete);
+// router.route("/:id")
+// .get(todo.read)
+// .put(todo.update)
+// .delete(todo.delete);
+
+/* ------------------------------------------------------- */
+router.get("/", todo.list);
+router.get("/create", todo.create);
 
 module.exports = router;
